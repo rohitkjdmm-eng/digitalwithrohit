@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-dark-bg selection:bg-primary-blue selection:text-white">
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
         <MarketingAnimation />
         <About />

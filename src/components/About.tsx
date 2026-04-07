@@ -23,10 +23,13 @@ export default function About() {
                 className="relative z-10 rounded-2xl overflow-hidden border border-white/10 glow-purple aspect-[4/5] max-w-[400px] mx-auto lg:mx-0"
               >
                 <img 
-                  src={PROFILE_DATA.profileImage} 
+                  src={PROFILE_DATA.aboutImage} 
                   alt={PROFILE_DATA.name} 
-                  className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?fit=crop&w=800&h=1000&q=80";
+                  }}
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6">

@@ -27,7 +27,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-white/[0.02]">
+    <section id="projects" className="py-24 bg-white/[0.02] relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <motion.div

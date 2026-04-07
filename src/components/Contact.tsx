@@ -4,7 +4,7 @@ import { PROFILE_DATA } from "../constants";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-white/[0.02]">
+    <section id="contact" className="py-24 bg-white/[0.02] relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <motion.div

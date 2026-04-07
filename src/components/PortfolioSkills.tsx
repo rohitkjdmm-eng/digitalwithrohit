@@ -51,7 +51,7 @@ export default function PortfolioSkills() {
   const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   return (
-    <div className="bg-black overflow-hidden">
+    <div className="bg-black overflow-hidden relative">
       {/* Section 1: Neon Path & Skills */}
       <section id="skills" ref={containerRef} className="py-32 relative min-h-[1600px]">
         {/* Background Gradients */}

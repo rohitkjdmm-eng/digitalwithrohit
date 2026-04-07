@@ -30,13 +30,16 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10 w-full h-full rounded-3xl overflow-hidden border-2 border-primary-blue glow-blue shadow-2xl bg-dark-bg/40 backdrop-blur-sm"
+              className="relative z-10 w-full h-full rounded-3xl overflow-hidden border-2 border-primary-blue glow-blue shadow-2xl"
             >
               <img
-                src={PROFILE_DATA.aboutImage}
+                src={PROFILE_DATA.profileImage}
                 alt={PROFILE_DATA.name}
-                className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&h=1000&q=80";
+                }}
+                className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
               />
             </motion.div>
             

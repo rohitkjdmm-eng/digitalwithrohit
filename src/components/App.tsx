@@ -5,6 +5,7 @@ import About from "./About";
 import PortfolioSkills from "./PortfolioSkills";
 import Training from "./Training";
 import Projects from "./Projects";
+import AIImageShowcase from "./AIImageShowcase";
 import EducationCertifications from "./EducationCertifications";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -20,6 +21,7 @@ export default function App() {
         <PortfolioSkills />
         <Training />
         <Projects />
+        <AIImageShowcase />
         <EducationCertifications />
         <Contact />
       </main>

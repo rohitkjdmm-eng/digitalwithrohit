@@ -11,3 +11,30 @@ export const PROFILE_DATA = {
   instagram: "https://www.instagram.com/irohitkj?igsh=MWppZTRkaGF5bXBw",
   resume: "https://lh3.googleusercontent.com/d/1aLphylP9o6hXKJ2kGivmC-wJczk55iZ5",
 };
+
+export const AI_IMAGES = [
+  {
+    id: 1,
+    url: "https://www.image2url.com/r2/default/images/1776006989836-f9f9fb36-d502-4c1e-b07d-5357fba96581.png",
+    title: "Luxury Watch Ad",
+    category: "Product Ad",
+  },
+  {
+    id: 2,
+    url: "https://www.image2url.com/r2/default/images/1776006808806-05f65272-a6b0-4824-b9f9-fb813878eaaa.png",
+    title: "Premium Jewellery",
+    category: "Jewellery Ad",
+  },
+  {
+    id: 3,
+    url: "https://www.image2url.com/r2/default/images/1776007613624-b5da8e2c-0005-436c-9ed6-38ceb964c799.png",
+    title: "Lifestyle Fashion",
+    category: "Lifestyle Ad",
+  },
+  {
+    id: 4,
+    url: "https://www.image2url.com/r2/default/images/1776007580367-83dff815-f4d8-4f7d-88ce-df51831d927e.png",
+    title: "UGC Content Ad",
+    category: "UGC Ad",
+  },
+];

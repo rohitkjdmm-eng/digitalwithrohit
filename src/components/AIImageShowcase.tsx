@@ -83,18 +83,18 @@ export default function AIImageShowcase() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
           {AI_IMAGES.map((image, index) => (
             <motion.div
               key={image.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.05 }}
               className="group relative"
             >
               <div 
-                className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer"
+                className="relative aspect-square rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
                 {/* Shimmer Placeholder */}
@@ -196,20 +196,20 @@ export default function AIImageShowcase() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative max-w-5xl w-full max-h-full flex flex-col md:flex-row bg-dark-bg rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+              className="relative max-w-6xl w-full max-h-[90vh] flex flex-col md:flex-row bg-dark-bg rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex-1 overflow-hidden bg-black/20 relative group/img">
+              <div className="flex-[2] overflow-hidden bg-black/20 relative group/img">
                 <img
                   src={selectedImage.url}
                   alt={selectedImage.title}
                   decoding="async"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain p-2 md:p-4"
                   referrerPolicy="no-referrer"
                 />
               </div>
               
-              <div className="w-full md:w-80 p-8 flex flex-col justify-center bg-white/[0.02] border-l border-white/10">
+              <div className="w-full md:w-72 p-6 md:p-8 flex flex-col justify-center bg-white/[0.02] border-l border-white/10">
                 <span className="text-primary-blue font-bold text-sm uppercase tracking-widest mb-2">
                   {selectedImage.category}
                 </span>

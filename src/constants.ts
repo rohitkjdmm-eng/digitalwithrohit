@@ -37,4 +37,16 @@ export const AI_IMAGES = [
     title: "UGC Content Ad",
     category: "UGC Ad",
   },
+  {
+    id: 5,
+    url: "https://www.image2url.com/r2/default/images/1776067606161-3b7a8034-24b2-44a1-b259-eab2457f4e26.png",
+    title: "Modern Brand Ad",
+    category: "Creative Ad",
+  },
+  {
+    id: 6,
+    url: "https://www.image2url.com/r2/default/images/1776067053243-0cdc55af-f6fd-41ef-b8ef-557274d1f380.png",
+    title: "Digital Marketing Visual",
+    category: "Marketing Ad",
+  },
 ];

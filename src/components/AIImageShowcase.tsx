@@ -6,6 +6,7 @@ import { AI_IMAGES } from "../constants";
 export default function AIImageShowcase() {
   const [selectedImage, setSelectedImage] = useState<typeof AI_IMAGES[0] | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
 
   const handleImageLoad = (id: number) => {
     setLoadedImages(prev => ({ ...prev, [id]: true }));
@@ -13,6 +14,7 @@ export default function AIImageShowcase() {
 
   const navigateImage = useCallback((direction: 'next' | 'prev') => {
     if (!selectedImage) return;
+    setModalImageLoaded(false);
     const currentIndex = AI_IMAGES.findIndex(img => img.id === selectedImage.id);
     let nextIndex;
     if (direction === 'next') {
@@ -21,6 +23,14 @@ export default function AIImageShowcase() {
       nextIndex = (currentIndex - 1 + AI_IMAGES.length) % AI_IMAGES.length;
     }
     setSelectedImage(AI_IMAGES[nextIndex]);
+  }, [selectedImage]);
+
+  const getAdjacentImages = useCallback(() => {
+    if (!selectedImage) return [];
+    const currentIndex = AI_IMAGES.findIndex(img => img.id === selectedImage.id);
+    const next = AI_IMAGES[(currentIndex + 1) % AI_IMAGES.length].url;
+    const prev = AI_IMAGES[(currentIndex - 1 + AI_IMAGES.length) % AI_IMAGES.length].url;
+    return [next, prev];
   }, [selectedImage]);
 
   const handleDownload = async (url: string, title: string) => {
@@ -95,7 +105,10 @@ export default function AIImageShowcase() {
             >
               <div 
                 className="relative aspect-square rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => {
+                  setSelectedImage(image);
+                  setModalImageLoaded(false);
+                }}
               >
                 {/* Shimmer Placeholder */}
                 {!loadedImages[image.id] && (
@@ -199,13 +212,31 @@ export default function AIImageShowcase() {
               className="relative max-w-6xl w-full max-h-[90vh] flex flex-col md:flex-row bg-dark-bg rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex-[2] overflow-hidden bg-black/20 relative group/img">
+              {/* Preload adjacent images */}
+              <div className="hidden">
+                {getAdjacentImages().map((url, i) => (
+                  <img key={i} src={url} alt="preload" />
+                ))}
+              </div>
+
+              <div className="flex-[2] overflow-hidden bg-black/20 relative group/img flex items-center justify-center">
+                {/* Loading Spinner */}
+                {!modalImageLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className="w-12 h-12 border-4 border-primary-blue/20 border-t-primary-blue rounded-full animate-spin" />
+                  </div>
+                )}
+                
                 <img
                   src={selectedImage.url}
                   alt={selectedImage.title}
                   decoding="async"
                   loading="eager"
-                  className="w-full h-full object-contain p-2 md:p-4"
+                  fetchPriority="high"
+                  onLoad={() => setModalImageLoaded(true)}
+                  className={`w-full h-full object-contain p-2 md:p-4 transition-opacity duration-500 ${
+                    modalImageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
                   referrerPolicy="no-referrer"
                 />
               </div>

@@ -20,12 +20,14 @@ export default function About() {
             <div className="relative mb-12 lg:mb-0">
               <motion.div
                 whileHover={{ rotateY: 10, rotateX: -5 }}
-                className="relative z-10 rounded-2xl overflow-hidden border border-white/10 glow-purple aspect-[4/5] max-w-[400px] mx-auto lg:mx-0"
+                className="relative z-10 rounded-2xl overflow-hidden border border-white/10 glow-purple aspect-[4/5] max-w-[400px] mx-auto lg:mx-0 bg-white/5"
               >
                 <img 
                   src={PROFILE_DATA.aboutImage} 
                   alt={PROFILE_DATA.name} 
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?fit=crop&w=800&h=1000&q=80";
                   }}

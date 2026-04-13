@@ -23,7 +23,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center md:justify-end order-1 md:order-2"
         >
-          <div className="relative w-full max-w-[420px] aspect-[4/5]">
+          <div className="relative w-full max-w-[420px] aspect-[4/5] bg-white/5 rounded-3xl overflow-hidden">
             {/* Soft blue glow behind the image container */}
             <div className="absolute inset-0 bg-primary-blue/40 rounded-full blur-[100px] animate-pulse" />
             
@@ -36,6 +36,8 @@ export default function Hero() {
                 src={PROFILE_DATA.profileImage}
                 alt={PROFILE_DATA.name}
                 referrerPolicy="no-referrer"
+                fetchPriority="high"
+                decoding="async"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&h=1000&q=80";
                 }}

@@ -204,6 +204,7 @@ export default function AIImageShowcase() {
                   src={selectedImage.url}
                   alt={selectedImage.title}
                   decoding="async"
+                  loading="eager"
                   className="w-full h-full object-contain p-2 md:p-4"
                   referrerPolicy="no-referrer"
                 />

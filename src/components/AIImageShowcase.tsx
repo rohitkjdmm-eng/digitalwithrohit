@@ -120,7 +120,8 @@ export default function AIImageShowcase() {
                 <img
                   src={image.url}
                   alt={image.title}
-                  loading="lazy"
+                  loading={index < 6 ? "eager" : "lazy"}
+                  fetchPriority={index < 6 ? "high" : "auto"}
                   decoding="async"
                   onLoad={() => handleImageLoad(image.id)}
                   className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
